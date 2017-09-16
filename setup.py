@@ -1,0 +1,1 @@
+import pandas as pdimport configparserimport oandapyconfig = configparser.ConfigParser()config.read('./config/config.ini')account_id = config['oanda']['account_id']api_key = config['oanda']['api_key']oanda_api = oandapy.API(environment="practice", access_token=api_key)response = oanda_api.get_prices(instruments="EUR_USD")print(response)

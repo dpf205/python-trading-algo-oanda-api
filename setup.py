@@ -1,34 +1,27 @@
 import pprint
 import pandas as pd
 import configparser
-import oandapy
+import oandapyV20
+from oandapyV20 import API
+import oandapyV20.endpoints.pricing as pricing
+
+
 
 
 config = configparser.ConfigParser()
 config.read('./config/config.ini')
 
-account_id = config['oanda']['account_id']
-api_key = config['oanda']['api_key']
+accountID = config['oanda']['account_id']
+access_token = config['oanda']['api_key']
+api = API(access_token=access_token)
 
-# Get prices
-oanda = oandapy.API(environment="practice", access_token=api_key)
+# Get rates information
+params = {
+    "instruments": "EUR_USD,USD_JPY"
+}
 
-response = oanda.get_prices(instruments="EUR_USD,USD_JPY,GBP_USD")
+r = pricing.PricingInfo(accountID=accountID, params=params)
 
-data = response['prices']
-time_stamp = data[0]['time']
-instrument = data[0]['instrument']
-bid_price = data[0]['bid']
-ask_price = data[0]['ask']
+rv = api.request(r)
 
-print("[{}] {} bid={} ask={}".format(time_stamp, instrument, bid_price, ask_price))
-
-
-table = pd.DataFrame(response['prices'])
-pprint.pprint(table)
-
-
-response = oanda.get_instruments(account_id)
-pd.DataFrame(response['instruments']).head()
-
-
+pprint.pprint(r.response)

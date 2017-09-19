@@ -38,7 +38,8 @@ client.request(r)
 account_orders_list = pd.Series(r.response['orders'][0])
 print(account_orders_list)
 
-# List all Pending Orders in an Account
+# List all Pending Orders in an Account, before you cancel an order (pending order == open order)
+# (use OrdersPending(), in lieu of the above OrderList() to cancel open orders)
 r = orders.OrdersPending(accountID)
 client.request(r)
 res = r.response['orders']
@@ -64,13 +65,13 @@ replacement_order_data = {
   }
 }
 
-cancel_and_replace = orders.OrderReplace(accountID=accountID, orderID=last_order_id, data=replacement_order_data)
-client.request(cancel_and_replace)
-print(cancel_and_replace)
+r = orders.OrderReplace(accountID=accountID, orderID=last_order_id, data=replacement_order_data)
+client.request(r)
+print(r.response)
+req_id = r.response['lastTransactionID'] # store lastTransactionID here because it will be used below for cancellation
 
 # Cancel a pending Order in an Account.
 client.request(r)
-req_id = r.response['lastTransactionID']
 r = orders.OrderCancel(accountID=accountID, orderID=req_id)
 print(r.response)
 
@@ -88,7 +89,7 @@ r = orders.OrderCreate(accountID, data=market_order_data)
 client.request(r)
 print(r.response)
 
-## confirmation details:
+## order confirmation output:
 print(r.response)
 orderCreateTransaction = pd.Series(r.response['orderCreateTransaction'])
 orderFillTransaction = pd.Series(r.response['orderFillTransaction'])

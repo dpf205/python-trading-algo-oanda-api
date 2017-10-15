@@ -1,4 +1,3 @@
-import pprint
 import pandas as pd
 import configparser
 import oandapyV20
@@ -18,9 +17,9 @@ r = pricing.PricingInfo(accountID=accountID, params=params)
 
 rv = api.request(r)
 
-pprint.pprint(r.response)
+print(r.response)
 
 prices = pd.DataFrame(r.response['prices'])
 
+print(prices)
 
-pprint.pprint(prices)

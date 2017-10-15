@@ -1,4 +1,3 @@
-import pprint
 import pandas as pd
 import oandapyV20
 import oandapyV20.endpoints.accounts as accounts

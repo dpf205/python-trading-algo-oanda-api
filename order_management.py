@@ -10,8 +10,10 @@ access_token = config['oanda']['api_key']
 
 client = oandapyV20.API(access_token=access_token)
 
+"""
+# 1 Create an order for an Account
+"""
 
-# Create an order for an Account
 data = {
   "order": {
     "price": "1.2",
@@ -26,16 +28,14 @@ data = {
     "positionFill": "DEFAULT"
   }
 }
-"""
-# 1  Create an Order
-r = orders.OrderCreate(accountID, data=data)
-client.request(r)
-create_order = pd.Series(r.response['orderCreateTransaction'])
-print(create_order)
-"""
+# r = orders.OrderCreate(accountID, data=data)
+# client.request(r)
+# create_order = pd.Series(r.response['orderCreateTransaction'])
+# print(create_order)
+
 
 """
-# 2 Get a List of Orders for an Account
+# 2 Get a list of open orders for an account
 """
 r = orders.OrderList(accountID)
 client.request(r)
@@ -79,15 +79,16 @@ replacement_order_data = {
 r = orders.OrderReplace(accountID=accountID, orderID=last_order_id, data=replacement_order_data)
 client.request(r)
 print(r.response)
-req_id = r.response['lastTransactionID'] # store lastTransactionID here because it will be used below for cancellation
+
+# store lastTransactionID here because it will be used below for cancellation
+last_order_id = r.response['lastTransactionID']
 
 
 """
 # 6 Cancel a pending Order in an Account.
-
 """
 client.request(r)
-r = orders.OrderCancel(accountID=accountID, orderID=req_id)
+r = orders.OrderCancel(accountID=accountID, orderID=last_order_id) # taken from above
 print(r.response)
 
 """
@@ -107,7 +108,7 @@ client.request(r)
 print(r.response)
 
 """
-# 8 order confirmation output:
+# 8 order confirmation output
 """
 print(r.response)
 orderCreateTransaction = pd.Series(r.response['orderCreateTransaction'])

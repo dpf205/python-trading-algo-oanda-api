@@ -17,8 +17,8 @@ params = {
     "instrument": "DE30_EUR,EUR_USD"
 }
 
+# params are optional. use to retrieve trades for specific currency pair(s)
 r = trades.TradesList(accountID=accountID, params=params)
-
 client.request(r)
 print(r.response)
 
@@ -28,21 +28,28 @@ print(r.response)
 """
 r = trades.OpenTrades(accountID)
 client.request(r)
-r.response
 trade_id = r.response['trades'][0]['id']
+print(trade_id)
+
 
 """
 # 3 Get the details of a specific Trade in an Account.
 """
 r = trades.TradeDetails(accountID, tradeID=trade_id)
 client.request(r)
+print(r.response)
+
 
 """
 # 4 Close (partially or fully) a specific open Trade in an Account.
 """
+#  close JUST PART  of position
 data = {
-          "units": 100
-       }
-r = trades.TradeClose(accountID, tradeID=trade_id)
+    "units": 100 # this specifies the size of position to close, assuming the size is greater than 100 units
+}
+r = trades.TradeClose(accountID, tradeID=trade_id, data=data)
 client.request(r)
 
+# close ENTIRE position
+r = trades.TradeClose(accountID, tradeID=trade_id)
+client.request(r)

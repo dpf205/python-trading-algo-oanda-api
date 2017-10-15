@@ -1,5 +1,3 @@
-note:
-
 ## Oanda Python API "pretty" v20 API documentation
 > https://oanda-api-v20.readthedocs.io/en/latest/installation.html
 

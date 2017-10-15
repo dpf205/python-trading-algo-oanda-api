@@ -106,7 +106,7 @@ client.request(r)
 print(r.response)
 
 """
-# 7 order confirmation output:
+# 8 order confirmation output:
 """
 print(r.response)
 orderCreateTransaction = pd.Series(r.response['orderCreateTransaction'])

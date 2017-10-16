@@ -1,6 +1,9 @@
 ## Oanda Python API "pretty" v20 API documentation
 > https://oanda-api-v20.readthedocs.io/en/latest/installation.html
 
+## Understanding Oanda Python v20 API documentation
+> https://github.com/anthonyng2/FX-Trading-with-Python-and-Oanda/blob/master/Oanda%20v20%20REST-oandapyV20/01.02%20Understanding%20the%20Documentations.ipynb
+
 ## OrderBook info
 > OANDA OrderBook:
 > http://oanda-api-v20.readthedocs.io/en/latest/endpoints/instruments/instrumentorderbook.html

@@ -22,3 +22,11 @@
 ## API access token
 > should be contained in a ../config/config.ini file and accessed by importing the configparser library
 > a copy could be kept in a private gist
+
+## Backtesting ideas
+> https://www.quantstart.com/qstrader
+> QSTrader is a freely available backtesting and live trading engine written in Python.
+> It has been developed for both retail quant traders and institutional quant hedge funds to aid strategy,
+> development and deployment. It is currently under heavy development from a team of 
+> volunteer software developers. Bugs are fixed and features are added each week, 
+> leading to a robust, optimised institutional-grade algorithmic trading infrastructure.

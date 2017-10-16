@@ -13,3 +13,8 @@
 
 ## OANDA REST API v20 specifications
 > developer.oanda.com/rest-live-v20/introduction/
+
+## FOREX Labs
+> Spread - not supported yet under V20. http://developer.oanda.com/rest-live-v20/forexlabs-ep/
+> Commitment of Traders - not supported yet under V20. http://developer.oanda.com/rest-live-v20/forexlabs-ep/
+> OrderBook - now supported under V20http://oanda-api-v20.readthedocs.io/en/latest/endpoints/instruments/instrumentorderbook.html

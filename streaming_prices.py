@@ -12,7 +12,7 @@ access_token = config['oanda']['api_key']
 
 api = API(access_token=access_token, environment="practice")
 
-instruments = "EUR_USD"
+instruments = ""
 s = PricingStream(accountID=accountID, params={"instruments": instruments})
 
 # format output to  JSON

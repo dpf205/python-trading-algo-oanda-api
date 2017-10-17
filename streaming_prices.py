@@ -6,14 +6,14 @@ import configparser
 
 
 config = configparser.ConfigParser()
-config.read('../config/config_v20.ini')
+config.read('../config/config.ini')
 accountID = config['oanda']['account_id']
 access_token = config['oanda']['api_key']
 
 api = API(access_token=access_token, environment="practice")
 
 instruments = "EUR_USD"
-s = PricingStream(accountID=accountID, params={"instruments":instruments})
+s = PricingStream(accountID=accountID, params={"instruments": instruments})
 
 # format output to  JSON
 try:

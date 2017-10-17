@@ -21,7 +21,7 @@
 
 ## API access token
 > should be contained in a ../config/config.ini file and accessed by importing the configparser library
-> a copy could be kept in a private gist
+> A copy could be kept in a private gist.
 
 ## Backtesting ideas
 > https://www.quantstart.com/qstrader

@@ -3,7 +3,7 @@ import oandapyV20.endpoints.instruments as instruments
 import configparser
 
 config = configparser.ConfigParser()
-config.read('../config/config_v20.ini')
+config.read('./config/config_v20.ini')
 accountID = config['oanda']['account_id']
 access_token = config['oanda']['api_key']
 
